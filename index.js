@@ -1,14 +1,18 @@
 // const fs = require('fs');
 const inquirer = require('inquirer');
 // const Employee = require('./lib/Employee');
-// const Manager = require('./lib/Manager');
-// const Engineer = require('./lib/Engineer');
-// const Intern = require('./lib/Intern');
-// const { inherits } = require('util');
-// const { type } = require('os');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+
+let profiles = [];
 
 //asks for manager's info
 function init () {
+    profiles = [];
+    console.log("\nWelcome to the team generator!")
+    console.log("Use`npm run reset` to reset the dist/ folder\n")
+    console.log("\nPlease build your team 👥")
     inquirer.prompt([
         {
             type: 'input',
@@ -30,7 +34,15 @@ function init () {
             name: 'officeNumber',
             message: "What is the team manager's office number?",
         }])
-        .then(() => {
+        .then((data) => {
+            const manager = new Manager;
+            manager.getName(data);
+            manager.getId(data);
+            manager.getEmail(data);
+            manager.getOfficeNumber(data);
+            manager.getRole(); 
+            profiles.push(manager);
+            console.log(profiles);
             firstQ();
         });
 };
@@ -47,10 +59,10 @@ function firstQ () {
         }])
         .then((data) => {
             if (data.employeeType === "Engineer") {
-                engineerQs ();
+                engineerQs (data);
             };
             if (data.employeeType === "Intern") {
-                internQs ();
+                internQs (data);
             };
             if (data.employeeType === "I don't want to add any more team members") {
                 return;
@@ -81,7 +93,15 @@ function engineerQs () {
             name: 'github',
             message: "What is your engineer's GitHub username?",
         }])
-        .then(() => {
+        .then((data) => {
+            const engineer = new Engineer;
+            engineer.getName(data);
+            engineer.getId(data);
+            engineer.getEmail(data);
+            engineer.getGithub(data);
+            engineer.getRole(); 
+            profiles.push(engineer);
+            console.log(profiles);
             firstQ ();
         });
 };
@@ -108,7 +128,15 @@ function internQs () {
             name: 'school',
             message: "What is your intern's school?",
         }])
-        .then(() => {
+        .then((data) => {
+            const intern = new Intern;
+            intern.getName(data);
+            intern.getId(data);
+            intern.getEmail(data);
+            intern.getSchool(data);
+            intern.getRole(); 
+            profiles.push(intern);
+            console.log(profiles);
             firstQ ();
         });
 };
