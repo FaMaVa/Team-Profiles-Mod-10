@@ -1,15 +1,13 @@
-// const fs = require('fs');
 const inquirer = require('inquirer');
-// const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const generateProfiles = require('./src/generate-profiles');
+const generateHTML = require('./src/generateHTML');
 
-let profiles = [];
 
 //asks for manager's info
-function init () {
-    profiles = [];
+function init() {
     console.log("\nWelcome to the team generator!")
     console.log("Use`npm run reset` to reset the dist/ folder\n")
     console.log("\nPlease build your team 👥")
@@ -40,16 +38,15 @@ function init () {
             manager.getId(data);
             manager.getEmail(data);
             manager.getOfficeNumber(data);
-            manager.getRole(); 
-            profiles.push(manager);
-            console.log(profiles);
+            manager.getRole();
+            generateProfiles.profiles.push(manager);
             firstQ();
         });
 };
 
 //asks what type of employee
-function firstQ () {
-    inquirer.prompt ([
+function firstQ() {
+    inquirer.prompt([
         {
             type: 'list',
             name: 'employeeType',
@@ -59,19 +56,20 @@ function firstQ () {
         }])
         .then((data) => {
             if (data.employeeType === "Engineer") {
-                engineerQs (data);
+                engineerQs(data);
             };
             if (data.employeeType === "Intern") {
-                internQs (data);
+                internQs(data);
             };
             if (data.employeeType === "I don't want to add any more team members") {
+                generateProfiles.generateProfiles();
                 return;
             };
         });
 };
 
 //asks questions for engineering team member
-function engineerQs () {
+function engineerQs() {
     inquirer.prompt([
         {
             type: 'input',
@@ -99,14 +97,13 @@ function engineerQs () {
             engineer.getId(data);
             engineer.getEmail(data);
             engineer.getGithub(data);
-            engineer.getRole(); 
-            profiles.push(engineer);
-            console.log(profiles);
-            firstQ ();
+            engineer.getRole();
+            generateProfiles.profiles.push(engineer);
+            firstQ();
         });
 };
 
-function internQs () {
+function internQs() {
     inquirer.prompt([
         {
             type: 'input',
@@ -134,11 +131,11 @@ function internQs () {
             intern.getId(data);
             intern.getEmail(data);
             intern.getSchool(data);
-            intern.getRole(); 
-            profiles.push(intern);
-            console.log(profiles);
-            firstQ ();
+            intern.getRole();
+            generateProfiles.profiles.push(intern);
+            firstQ();
         });
 };
+
 
 init();
