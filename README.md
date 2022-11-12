@@ -21,7 +21,7 @@ This application was designed for web development teams to quickly create a HTML
 
 To use this this application, you must first consult the installation section of this README and download the three requirements.  Then, run "node index.js" in your terminal to answer questions for the employee profiles of your team. Once you have created a profile for each of the employees, select "I don't want to add any more team members". Then a HTML file will be generated in the "dist" folder for you to view the profiles on a HTML webpage.
 
-<!-- [![Watch the video](https://i.imgur.com/vKb2F1B.png)](https://youtu.be/vt5fpE0bzSY) -->
+[![Watch the video](./images/preview.png)](https://app.castify.com/view/daa2eb2d-72e2-4da6-bd7a-ca3ad39159ea)
 
 ## Credits
 

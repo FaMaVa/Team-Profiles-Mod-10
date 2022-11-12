@@ -6,7 +6,6 @@ let profiles = [];
 let profilesHTML = ``;
 
 function generateProfiles() {
-    console.log(profiles);
     profiles.forEach((profile) => {
         if (profile.role === `Manager`) {
             profilesHTML += `<div class="col-auto p-3">
@@ -39,7 +38,7 @@ function generateProfiles() {
                         <li class="list-group-item" style="color: rgb(33, 146, 124); font-size: 15px; font-weight: bold;">ID:
                             ${profile.id}</li>
                         <li class="list-group-item" style="color: rgb(33, 146, 124); font-size: 15px; font-weight: bold;">Email: <a style="color: rgb(33, 146, 124);" href = "mailto:${profile.email}">${profile.email}</a></li>
-                        <li class="list-group-item" style="color: rgb(33, 146, 124); font-size: 15px; font-weight: bold;">GitHub: <a style="color: rgb(33, 146, 124);" href = "https://github.com/${profile.email}">${profile.github}</a></li>
+                        <li class="list-group-item" style="color: rgb(33, 146, 124); font-size: 15px; font-weight: bold;">GitHub: <a style="color: rgb(33, 146, 124);" href = "https://github.com/${profile.github}">${profile.github}</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 
 function generateHTML(html) { 
-    console.log(html)
     return `<!DOCTYPE html>
     <html lang="en">
     <head>
