@@ -33,6 +33,7 @@ function init() {
             message: "What is the team manager's office number?",
         }])
         .then((data) => {
+            console.log(data);
             const manager = new Manager;
             manager.getName(data);
             manager.getId(data);
@@ -92,6 +93,7 @@ function engineerQs() {
             message: "What is your engineer's GitHub username?",
         }])
         .then((data) => {
+            console.log(data);
             const engineer = new Engineer;
             engineer.getName(data);
             engineer.getId(data);
@@ -126,6 +128,7 @@ function internQs() {
             message: "What is your intern's school?",
         }])
         .then((data) => {
+            console.log(data);
             const intern = new Intern;
             intern.getName(data);
             intern.getId(data);
